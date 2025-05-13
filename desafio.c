@@ -13,17 +13,18 @@ struct Carta{
     float Area_km2;
     float PIB;
     int Pontos_Turisticos;
+
 };
 
 int main(){
     struct Carta cartas[MAX_CARTAS];
 
-    printf("Desafio Super Trunfo!\n- Cadastre sua Carta:\n");
+    printf("**** Desafio Super Trunfo! ****\n\n- Cadastre sua Carta: -\n");
 
     //------- Cadastrando Carta -------
 
     for (int i = 0; i < MAX_CARTAS; i++) {               //Loop para cadastrar
-        printf("\n--- Cadastro da Carta %d ---\n", i + 1);
+        printf("\n--- Cadastro da Carta n°%d ---\n", i + 1);
 
     printf("*Estado*: \n");
     scanf(" %s", cartas[i].Estado);
@@ -34,7 +35,7 @@ int main(){
     printf("*Cidade*: \n");
     scanf(" %[^\n]", cartas[i].Cidade);
 
-    printf("*População (em Milhões)*: \n");
+    printf("*População*: \n");
     scanf("%d", &cartas[i].Populacao);
 
     while (getchar() != '\n');                          // limpa o buffer
@@ -50,22 +51,42 @@ int main(){
         scanf("%d", &cartas[i].Pontos_Turisticos);
     }
 
-    //-------Exibição da Carta-------
+    float Densidade_Populacional1 = (float)(cartas[0].Populacao) / (cartas[0].Area_km2);
+    float Densidade_Populacional2 = (float)(cartas[1].Populacao) / (cartas[1].Area_km2);
+    float PIB_per_Capita1 = (float)(cartas[0].PIB*1000000000) / (cartas[0].Populacao);
+    float PIB_per_Capita2 = (float)(cartas[1].PIB*1000000000) / (cartas[1].Populacao);
+
+    ///EXIBIÇÃO DAS CARTAS///
+
+    ///CARTA 01//
 
     printf("\n--- CARTAS CADASTRADAS ---\n");
-    for (int i = 0; i < MAX_CARTAS; i++) {
 
-        printf("\n---CARTA CADASTRADA---\n");
-        printf("\nCarta %02d:\n", i + 1);
+    printf("\nCarta 01:\n");
+    printf("Estado:                     %s\n", cartas[0]. Estado);
+    printf("Código:                     %s\n", cartas[0].codigo);
+    printf("Cidade:                     %s\n", cartas[0].Cidade);
+    printf("População:                  %d\n", cartas[0].Populacao);
+    printf("Área:                       %.2f km²\n", cartas[0].Area_km2);
+    printf("PIB:                        %.2f bilhões de reais\n", cartas[0].PIB);
+    printf("Pontos Turísticos:          %d\n", cartas[0].Pontos_Turisticos);
+    printf("Densidade Populacional:     %.2f hab/km²\n", Densidade_Populacional1);
+    printf("PIB per Capita:             %.2f reais\n", PIB_per_Capita1);
 
-    printf("Estado:             %s\n", cartas[i].Estado);
-    printf("Código:             %s\n", cartas[i].codigo);
-    printf("Cidade:             %s\n", cartas[i].Cidade);
-    printf("População:          %d milhões\n", cartas[i].Populacao);
-    printf("Área:               %f km²\n", cartas[i].Area_km2);
-    printf("PIB:                %f bilhões de reais\n", cartas[i].PIB);
-    printf("Pontos Turísticos:  %d \n", cartas[i].Pontos_Turisticos);
-    }
+    ///CARTA 02///
+
+    printf("\nCarta 02:\n");
+    printf("Estado:                     %s\n", cartas[1].Estado);
+    printf("Código:                     %s\n", cartas[1].codigo);
+    printf("Cidade:                     %s\n", cartas[1].Cidade);
+    printf("População:                  %d\n", cartas[1].Populacao);
+    printf("Área:                       %.2f km²\n", cartas[1].Area_km2);
+    printf("PIB:                        %.2f bilhões de reais\n", cartas[1].PIB);
+    printf("Pontos Turísticos:          %d \n", cartas[1].Pontos_Turisticos);
+    printf("Densidade Populacional:     %.2f hab/km²\n", Densidade_Populacional2);
+    printf("PIB per Capita:             %.2f reais\n", PIB_per_Capita2);
+
 
     return 0;
+
 }
